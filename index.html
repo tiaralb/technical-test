@@ -27,7 +27,7 @@
 
   <link href="assets/css/style.css" rel="stylesheet">
   <style>
-    #myImg {
+    #myImg, #myImg2, #myImg3, #myImg4, #myImg5, #myImg6, #myImg7, #myImg8, #myImg9 {
       border-radius: 5px;
       cursor: pointer;
       transition: 0.3s;
@@ -43,7 +43,7 @@
       /* Hidden by default */
       position: fixed;
       /* Stay in place */
-      z-index: 1;
+      z-index: 1000;
       /* Sit on top */
       padding-top: 100px;
       /* Location of the box */
@@ -230,59 +230,44 @@
   </svg>
   <!-- ======= Modal Picture ======= -->
   <!-- The Modal -->
-  <div id="myModal" class="modal">
-
-    <!-- The Close Button -->
-    <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
-
-    <!-- Modal Content (The Image) -->
+  <div id="myModal1" class="modal">
+    <span class="close" onclick="document.getElementById('myModal1').style.display='none'">&times;</span>
     <img class="modal-content" id="img01">
-
-    <!-- Modal Caption (Image Text) -->
     <div id="caption"></div>
   </div>
 
   <!-- ======= Modal Form ======= -->
-  <div class="modal" id="formModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
+  <div class="modal" id="formModal" tabindex="-1">
+    <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Job Application</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+            
+          <button type="button" onclick="closeModal()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form>
-            <div class="form-group row">
-              <label for="name" class="col-sm-2 col-form-label">Name</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputName" placeholder="name">
-              </div>
-              <label for="staticEmail" class="col-sm-2 col-form-label">Handphone</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputEmail" placeholder="handphone">
-              </div>
-              <label for="staticEmail" class="col-sm-2 col-form-label">Whatsapp Nomor</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputEmail" placeholder="Whatsapp nomor">
-              </div>
-              <label for="staticEmail" class="col-sm-2 col-form-label">Position</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputEmail" placeholder="position">
-              </div>
+          <form method="POST">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter name">
             </div>
-            <div class="form-group row">
-              <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-              <div class="col-sm-10">
-                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-              </div>
+            <div class="form-group">
+              <label for="nohp">Handphone</label>
+              <input type="text" class="form-control" id="handphone" placeholder="Enter no handphone">
+            </div>
+            <div class="form-group">
+              <label for="nohp">No Whatsapp</label>
+              <input type="text" class="form-control" id="whatsapp" placeholder="Enter no whatsapp">
+            </div>
+            <div class="form-group">
+              <label for="position">Position</label>
+              <input type="text" class="form-control" id="position" placeholder="Enter no position">
             </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Save changes</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" onclick="closeModal();" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" onclick="saveData();" class="btn btn-primary">Submit</button>
         </div>
       </div>
     </div>
@@ -371,8 +356,8 @@
                     </li>
                   </ul>
                 </div>
-                <img id="myImg" alt="lowongan 1" src="assets/img/lowongan1.jpg" alt="">
-                <button type="button" id="button1" class="btn btn-secondary">Apply Job</button>
+                <img id="myImg" onclick="showModal('assets/img/lowongan1.jpg');" alt="lowongan 1" src="assets/img/lowongan1.jpg" alt="">
+                <button type="button" id="button1" onclick="showForm()" class="btn btn-secondary">Apply Job</button>
               </div>
 
             </div>
@@ -397,8 +382,8 @@
                     </li>
                   </ul>
                 </div>
-                <img id="myImg" src="assets/img/lowongan2.jpg" alt="">
-                <button type="button" class="btn btn-secondary">Apply Job</button>
+                <img id="myImg2" onclick="showModal('assets/img/lowongan2.jpg');" alt="lowongan 2" src="assets/img/lowongan2.jpg" alt="">
+                <button type="button" onclick="showForm()" class="btn btn-secondary">Apply Job</button>
               </div>
             </div>
 
@@ -422,8 +407,8 @@
                     </li>
                   </ul>
                 </div>
-                <img src="assets/img/lowongan3.jpg" alt="">
-                <button type="button" class="btn btn-secondary">Apply Job</button>
+                <img id="myImg3" onclick="showModal('assets/img/lowongan3.jpg');" alt="lowongan 3" src="assets/img/lowongan3.jpg" alt="">
+                <button type="button" onclick="showForm()" class="btn btn-secondary">Apply Job</button>
               </div>
             </div>
           </div>
@@ -449,8 +434,8 @@
                     </li>
                   </ul>
                 </div>
-                <img src="assets/img/lowongan4.jpg" alt="">
-                <button type="button" class="btn btn-secondary">Apply Job</button>
+                <img id="myImg4" onclick="showModal('assets/img/lowongan4.jpg');" alt="lowongan 4" src="assets/img/lowongan4.jpg" alt="">
+                <button type="button" onclick="showForm()" class="btn btn-secondary">Apply Job</button>
               </div>
             </div>
 
@@ -474,8 +459,8 @@
                     </li>
                   </ul>
                 </div>
-                <img src="assets/img/lowongan5.jpg" alt="">
-                <button type="button" class="btn btn-secondary">Apply Job</button>
+                <img id="myImg5" onclick="showModal('assets/img/lowongan5.jpg');" alt="lowongan 5" src="assets/img/lowongan5.jpg" alt="">
+                <button type="button" onclick="showForm()" class="btn btn-secondary">Apply Job</button>
               </div>
             </div>
 
@@ -499,8 +484,8 @@
                     </li>
                   </ul>
                 </div>
-                <img src="assets/img/lowongan6.jpg" alt="">
-                <button type="button" class="btn btn-secondary">Apply Job</button>
+                <img id="myImg6" onclick="showModal('assets/img/lowongan6.jpg');" alt="lowongan 6" src="assets/img/lowongan6.jpg" alt="">
+                <button type="button" onclick="showForm()" class="btn btn-secondary">Apply Job</button>
               </div>
             </div>
           </div>
@@ -526,8 +511,8 @@
                     </li>
                   </ul>
                 </div>
-                <img src="assets/img/lowongan7.jpg" alt="">
-                <button type="button" class="btn btn-secondary">Apply Job</button>
+                <img id="myImg7" onclick="showModal('assets/img/lowongan7.jpg');" alt="lowongan 7" src="assets/img/lowongan7.jpg" alt="">
+                <button type="button" onclick="showForm()" class="btn btn-secondary">Apply Job</button>
               </div>
             </div>
 
@@ -552,8 +537,8 @@
                     </li>
                   </ul>
                 </div>
-                <img src="assets/img/lowongan8.jpg" alt="">
-                <button type="button" class="btn btn-secondary">Apply Job</button>
+                <img id="myImg8" onclick="showModal('assets/img/lowongan8.jpg');" alt="lowongan 8" src="assets/img/lowongan8.jpg" alt="">
+                <button type="button" onclick="showForm()" class="btn btn-secondary">Apply Job</button>
               </div>
             </div>
 
@@ -577,8 +562,8 @@
                     </li>
                   </ul>
                 </div>
-                <img src="assets/img/lowongan9.jpg" alt="">
-                <button type="button" class="btn btn-secondary">Apply Job</button>
+                <img id="myImg9" onclick="showModal('assets/img/lowongan9.jpg');" alt="lowongan 9"src="assets/img/lowongan9.jpg" alt="">
+                <button type="button" onclick="showForm()" class="btn btn-secondary">Apply Job</button>
               </div>
             </div>
           </div>
@@ -619,27 +604,55 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script>
+    var statusModal = false;
     // Get the modal
-    var modal = document.getElementById('myModal');
-
-    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var modal = document.getElementById('myModal1');
     var img = document.getElementById('myImg');
     var modalImg = document.getElementById("img01");
     var captionText = document.getElementById("caption");
-    img.onclick = function () {
-      modal.style.display = "block";
-      modalImg.src = this.src;
-      modalImg.alt = this.alt;
-      captionText.innerHTML = this.alt;
-    }
-
-    // Get the <span> element that closes the modal
+    // img.addEventListener("click", showModal); 
     var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks on <span> (x), close the modal
     span.onclick = function () {
       modal.style.display = "none";
     }
+
+    function showModal(src){
+    statusModal = true;
+    modal.style.display = "block";
+  	modalImg.src = src;
+  	modalImg.alt = this.alt;
+  	captionText.innerHTML = this.alt;
+  	console.log("test")
+ }
+
+   function showForm(){
+     document.getElementById('formModal').style.display = "block";
+    
+  
+   }
+   function closeModal(){
+    document.getElementById('formModal').style.display = "none";
+   }
+   
+   function saveData() {
+     var nama = document.getElementById("name").value
+     var hp = document.getElementById("handphone").value
+     var wa = document.getElementById("whatsapp").value
+     var position = document.getElementById("position").value
+     
+     alert('Nama : ' + nama + '\n' + 'No Handphone : ' + hp + '\n' + 'No Whatsapp : ' + wa + '\n' + 'Position : ' + position);
+    
+
+   }
+
+   document.onkeydown = function(evt) {
+    evt = evt || window.event;
+    if (evt.keyCode == 27) {
+        if (statusModal == true){
+          modal.style.display = "none"
+        }
+    }
+    };
   </script>
 
 </body>
