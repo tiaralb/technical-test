@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Technical Test Tiara</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/logoo.png" rel="icon">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="assets/css/style.css" rel="stylesheet">
+  <style>
+    #myImg {
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #myImg:hover {
+      opacity: 0.7;
+    }
+
+    /* The Modal (background) */
+    .modal {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      padding-top: 100px;
+      /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.9);
+      /* Black w/ opacity */
+    }
+
+    /* Modal Content (Image) */
+    .modal-content {
+      margin: auto;
+      display: block;
+      width: 410px;
+      height: 610px;
+    }
+
+    /* Caption of Modal Image (Image Text) - Same Width as the Image */
+    #caption {
+      margin: auto;
+      display: block;
+      width: 80%;
+      max-width: 700px;
+      text-align: center;
+      color: #ccc;
+      padding: 10px 0;
+      height: 150px;
+    }
+
+    /* Add Animation - Zoom in the Modal */
+    .modal-content,
+    #caption {
+      -webkit-animation-name: zoom;
+      -webkit-animation-duration: 0.6s;
+      animation-name: zoom;
+      animation-duration: 0.6s;
+    }
+
+    @-webkit-keyframes zoom {
+      from {
+        -webkit-transform: scale(0)
+      }
+
+      to {
+        -webkit-transform: scale(1)
+      }
+    }
+
+    @keyframes zoom {
+      from {
+        transform: scale(0)
+      }
+
+      to {
+        transform: scale(1)
+      }
+    }
+
+    /* The Close Button */
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* 100% Image Width on Smaller Screens */
+    @media only screen and (max-width: 700px) {
+      .modal-content {
+        width: 100%;
+      }
+    }
+
+    .b-example-divider {
+      height: 3rem;
+      background-color: rgba(0, 0, 0, .1);
+      border: solid rgba(0, 0, 0, .15);
+      border-width: 1px 0;
+      box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+    }
+
+    .bi {
+      vertical-align: -.125em;
+      fill: currentColor;
+    }
+
+    .feature-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 4rem;
+      height: 4rem;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      color: #fff;
+      border-radius: .75rem;
+    }
+
+    .icon-link {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .icon-link>.bi {
+      margin-top: .125rem;
+      margin-left: .125rem;
+      transition: transform .25s ease-in-out;
+      fill: currentColor;
+    }
+
+    .icon-link:hover>.bi {
+      transform: translate(.25rem);
+    }
+
+    .icon-square {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 3rem;
+      height: 3rem;
+      font-size: 1.5rem;
+      border-radius: .75rem;
+    }
+
+    .rounded-4 {
+      border-radius: .5rem;
+    }
+
+    .rounded-5 {
+      border-radius: 1rem;
+    }
+
+    .text-shadow-1 {
+      text-shadow: 0 .125rem .25rem rgba(0, 0, 0, .25);
+    }
+
+    .text-shadow-2 {
+      text-shadow: 0 .25rem .5rem rgba(0, 0, 0, .25);
+    }
+
+    .text-shadow-3 {
+      text-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .25);
+    }
+
+    .card-cover {
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+    }
+  </style>
+</head>
+
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="bootstrap" viewBox="0 0 118 94">
+      <symbol id="calendar3" viewBox="0 0 16 16">
+        <path
+          d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z" />
+        <path
+          d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+      </symbol>
+      <symbol id="geo-fill" viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+          d="M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999zm2.493 8.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.319 1.319 0 0 0-.37.265.301.301 0 0 0-.057.09V14l.002.008a.147.147 0 0 0 .016.033.617.617 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.619.619 0 0 0 .146-.15.148.148 0 0 0 .015-.033L12 14v-.004a.301.301 0 0 0-.057-.09 1.318 1.318 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465-1.281 0-2.462-.172-3.34-.465-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411z" />
+      </symbol>
+  </svg>
+  <!-- ======= Modal Picture ======= -->
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+
+    <!-- The Close Button -->
+    <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+
+    <!-- Modal Content (The Image) -->
+    <img class="modal-content" id="img01">
+
+    <!-- Modal Caption (Image Text) -->
+    <div id="caption"></div>
+  </div>
+
+  <!-- ======= Modal Form ======= -->
+  <div class="modal" id="formModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Job Application</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group row">
+              <label for="name" class="col-sm-2 col-form-label">Name</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputName" placeholder="name">
+              </div>
+              <label for="staticEmail" class="col-sm-2 col-form-label">Handphone</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputEmail" placeholder="handphone">
+              </div>
+              <label for="staticEmail" class="col-sm-2 col-form-label">Whatsapp Nomor</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputEmail" placeholder="Whatsapp nomor">
+              </div>
+              <label for="staticEmail" class="col-sm-2 col-form-label">Position</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputEmail" placeholder="position">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+              <div class="col-sm-10">
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center">
+
+      <div class="logo me-auto">
+        <h1><a href="index.html">Job Applicant</a></h1>
+
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a> -->
+      </div>
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#services">Search Job</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <div class="header-social-links d-flex align-items-center">
+        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+      </div>
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center"
+          data-aos="fade-up">
+          <div>
+            <h1>Our vision is to connect businesses with talent and improve lives through better careers.</h1>
+            <a href="#services" class="btn-get-started scrollto">Find your dream job!</a>
+          </div>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left">
+          <img src="assets/img/hero-img.png" class="img-fluid" alt="">
+        </div>
+      </div>
+    </div>
+
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services section-bg">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>Search Jobs</h2>
+        </div>
+
+        <div class="container px-4 py-3" id="custom-cards">
+
+          <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+
+            <div class="col">
+              <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
+                data-aos="zoom-in" data-aos-delay="100">
+                <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                  <h5>Lowongan ke-1</h5>
+                  <br>
+                  <ul class="d-flex list-unstyled mt-auto">
+                    <li class="d-flex align-items-center me-3">
+                      <svg class="bi me-2" width="1em" height="1em">
+                        <use xlink:href="#geo-fill" />
+                      </svg>
+                      <small>Jakarta Pusat</small>
+                    </li>
+                    <li class="d-flex align-items-center">
+                      <svg class="bi me-2" width="1em" height="1em">
+                        <use xlink:href="#calendar3" />
+                      </svg>
+                      <small>1d</small>
+                    </li>
+                  </ul>
+                </div>
+                <img id="myImg" alt="lowongan 1" src="assets/img/lowongan1.jpg" alt="">
+                <button type="button" id="button1" class="btn btn-secondary">Apply Job</button>
+              </div>
+
+            </div>
+
+            <div class="col">
+              <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
+                data-aos="zoom-in" data-aos-delay="200">
+                <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                  <h5>Lowongan ke-2</h5>
+                  <ul class="d-flex list-unstyled mt-auto">
+                    <li class="d-flex align-items-center me-3">
+                      <svg class="bi me-2" width="1em" height="1em">
+                        <use xlink:href="#geo-fill" />
+                      </svg>
+                      <small>Jakarta Utara</small>
+                    </li>
+                    <li class="d-flex align-items-center">
+                      <svg class="bi me-2" width="1em" height="1em">
+                        <use xlink:href="#calendar3" />
+                      </svg>
+                      <small>4d</small>
+                    </li>
+                  </ul>
+                </div>
+                <img id="myImg" src="assets/img/lowongan2.jpg" alt="">
+                <button type="button" class="btn btn-secondary">Apply Job</button>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
+                data-aos="zoom-in" data-aos-delay="300">
+                <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+                  <h5>Lowongan ke-3</h5>
+                  <ul class="d-flex list-unstyled mt-auto">
+                    <li class="d-flex align-items-center me-3">
+                      <svg class="bi me-2" width="1em" height="1em">
+                        <use xlink:href="#geo-fill" />
+                      </svg>
+                      <small>Bandung</small>
+                    </li>
+                    <li class="d-flex align-items-center">
+                      <svg class="bi me-2" width="1em" height="1em">
+                        <use xlink:href="#calendar3" />
+                      </svg>
+                      <small>2d</small>
+                    </li>
+                  </ul>
+                </div>
+                <img src="assets/img/lowongan3.jpg" alt="">
+                <button type="button" class="btn btn-secondary">Apply Job</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+            <div class="col">
+              <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
+                data-aos="zoom-in" data-aos-delay="400">
+                <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                  <h5>Lowongan ke-4</h5>
+                  <ul class="d-flex list-unstyled mt-auto">
+                    <li class="d-flex align-items-center me-3">
+                      <svg class="bi me-2" width="1em" height="1em">
+                        <use xlink:href="#geo-fill" />
+                      </svg>
+                      <small>Jakarta Barat</small>
+                    </li>
+                    <li class="d-flex align-items-center">
+                      <svg class="bi me-2" width="1em" height="1em">
+                        <use xlink:href="#calendar3" />
+                      </svg>
+                      <small>3d</small>
+                    </li>
+                  </ul>
+                </div>
+                <img src="assets/img/lowongan4.jpg" alt="">
+                <button type="button" class="btn btn-secondary">Apply Job</button>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
+                style="background-image: url('unsplash-photo-2.jpg');" data-aos="zoom-in" data-aos-delay="500">
+                <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                  <h5>Lowongan ke-5</h5>
+                  <ul class="d-flex list-unstyled mt-auto">
+                    <li class="d-flex align-items-center me-3">
+                      <svg class="bi me-2" width="1em" height="1em">
+                        <use xlink:href="#geo-fill" />
+                      </svg>
+                      <small>Bogor</small>
+                    </li>
+                    <li class="d-flex align-items-center">
+                      <svg class="bi me-2" width="1em" height="1em">
+                        <use xlink:href="#calendar3" />
+                      </svg>
+                      <small>4d</small>
+                    </li>
+                  </ul>
+                </div>
+                <img src="assets/img/lowongan5.jpg" alt="">
+                <button type="button" class="btn btn-secondary">Apply Job</button>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
+                style="background-image: url('unsplash-photo-3.jpg');" data-aos="zoom-in" data-aos-delay="600">
+                <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+                  <h5>Lowongan ke-6</h5>
+                  <ul class="d-flex list-unstyled mt-auto">
+                    <li class="d-flex align-items-center me-3">
+                      <svg class="bi me-2" width="1em" height="1em">
+                        <use xlink:href="#geo-fill" />
+                      </svg>
+                      <small>Bogor</small>
+                    </li>
+                    <li class="d-flex align-items-center">
+                      <svg class="bi me-2" width="1em" height="1em">
+                        <use xlink:href="#calendar3" />
+                      </svg>
+                      <small>2d</small>
+                    </li>
+                  </ul>
+                </div>
+                <img src="assets/img/lowongan6.jpg" alt="">
+                <button type="button" class="btn btn-secondary">Apply Job</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+            <div class="col">
+              <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
+                data-aos="zoom-in" data-aos-delay="700">
+                <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                  <h5>Lowongan ke-7</h5>
+                  <ul class="d-flex list-unstyled mt-auto">
+                    <li class="d-flex align-items-center me-3">
+                      <svg class="bi me-2" width="1em" height="1em">
+                        <use xlink:href="#geo-fill" />
+                      </svg>
+                      <small>Jakarta Utara</small>
+                    </li>
+                    <li class="d-flex align-items-center">
+                      <svg class="bi me-2" width="1em" height="1em">
+                        <use xlink:href="#calendar3" />
+                      </svg>
+                      <small>3d</small>
+                    </li>
+                  </ul>
+                </div>
+                <img src="assets/img/lowongan7.jpg" alt="">
+                <button type="button" class="btn btn-secondary">Apply Job</button>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
+                style="background-image: url('unsplash-photo-2.jpg');" data-aos="zoom-in" data-aos-delay="800">
+                <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                  <h5>Lowongan ke-8</h5>
+                  <ul class="d-flex list-unstyled mt-auto">
+
+                    <li class="d-flex align-items-center me-3">
+                      <svg class="bi me-2" width="1em" height="1em">
+                        <use xlink:href="#geo-fill" />
+                      </svg>
+                      <small>Bandung</small>
+                    </li>
+                    <li class="d-flex align-items-center">
+                      <svg class="bi me-2" width="1em" height="1em">
+                        <use xlink:href="#calendar3" />
+                      </svg>
+                      <small>2d</small>
+                    </li>
+                  </ul>
+                </div>
+                <img src="assets/img/lowongan8.jpg" alt="">
+                <button type="button" class="btn btn-secondary">Apply Job</button>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
+                style="background-image: url('unsplash-photo-3.jpg');" data-aos="zoom-in" data-aos-delay="900">
+                <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+                  <h5>Lowongan ke-9</h5>
+                  <ul class="d-flex list-unstyled mt-auto">
+                    <li class="d-flex align-items-center me-3">
+                      <svg class="bi me-2" width="1em" height="1em">
+                        <use xlink:href="#geo-fill" />
+                      </svg>
+                      <small>Jakarta Timur</small>
+                    </li>
+                    <li class="d-flex align-items-center">
+                      <svg class="bi me-2" width="1em" height="1em">
+                        <use xlink:href="#calendar3" />
+                      </svg>
+                      <small>4d</small>
+                    </li>
+                  </ul>
+                </div>
+                <img src="assets/img/lowongan9.jpg" alt="">
+                <button type="button" class="btn btn-secondary">Apply Job</button>
+              </div>
+            </div>
+          </div>
+
+
+
+
+        </div>
+
+
+
+
+      </div>
+    </section><!-- End Services Section -->
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>yayagitudeh</span></strong>. All Rights Reserved
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Get the modal
+    var modal = document.getElementById('myModal');
+
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var img = document.getElementById('myImg');
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    img.onclick = function () {
+      modal.style.display = "block";
+      modalImg.src = this.src;
+      modalImg.alt = this.alt;
+      captionText.innerHTML = this.alt;
+    }
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+      modal.style.display = "none";
+    }
+  </script>
+
+</body>
+
+</html>
